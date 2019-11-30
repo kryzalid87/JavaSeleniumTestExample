@@ -14,7 +14,7 @@ class HomePageTest extends TestBase {
     @CsvSource({"French, Hôtels, Rechercher",
             "German, Hotels, Suche",
             "Spanish, Hoteles, Buscar"})
-    @DisplayName("There should be price displayed on hotel search result list")
+    @DisplayName("There should be website language change possible")
     void thereShouldBeLanguageChangePossible(String language, String hotelsTabName, String searchButtonText) {
         var homePage = goTo(HomePage.class, mainPageUrl);
 

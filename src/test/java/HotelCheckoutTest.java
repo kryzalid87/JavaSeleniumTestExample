@@ -34,7 +34,7 @@ class HotelCheckoutTest extends TestBase {
      *
      */
     @Test
-    @DisplayName("Checkout should be possible as guest")
+    @DisplayName("CGuest should be able to book a room")
     void guestShouldBeAbleToBookARoom(){
         HomePage homePage = goTo(HomePage.class, mainPageUrl);
 
@@ -48,35 +48,35 @@ class HotelCheckoutTest extends TestBase {
 
         Assertions.assertFalse(hotelCheckout.isAlertPresent(), "Alert is displayed");
     }
-//
-//    @Ignore("There is a problem with login page page object - needs further investigation")
-//    @Test
-//    @DisplayName("Registered user should be able to book a room")
-//    void registeredUserShouldBeAbleToBookARoom(){
-//        var fakeSmtpServer = Mockito.mock(FakeSmtpServer.class);
-//        Mockito.when(fakeSmtpServer.CheckForMail()).thenReturn("");
-//
-//        LoginPage loginPage = goTo(LoginPage.class, loginPageUrl);
-//        loginPage.logIn(userData.getEmail(), userData.getPassword());
-//
-//        var homePage = goTo(HomePage.class, mainPageUrl);
-//
-//        var hotels = homePage.getSearchElement().searchForHotel(hotel.getCity(), now, now.plusDays(hotel.getHowManyNights()), hotel.getAdults(), hotel.getKids());
-//        var hotelDetails = hotels.openHotelDetails(hotel.getHotelName());
-//        var hotelCheckout = hotelDetails.goToHotelCheckoutForCheapestRoom(hotel.getRoomName());
-//
-//        hotelCheckout.fillInPersonalInformation(personalInformation);
-//        hotelCheckout.fillInCardData(cardData);
-//        hotelCheckout.getCompleteBookingButton().click();
-//
-//        Assertions.assertEquals("Room booked", fakeSmtpServer.CheckForMail());
-//    }
+
+    @Ignore("There is a problem with login page page object - needs further investigation")
+    @Test
+    @DisplayName("Registered user should be able to book a room")
+    void registeredUserShouldBeAbleToBookARoom(){
+        var fakeSmtpServer = Mockito.mock(FakeSmtpServer.class);
+        Mockito.when(fakeSmtpServer.CheckForMail()).thenReturn("");
+
+        LoginPage loginPage = goTo(LoginPage.class, loginPageUrl);
+        loginPage.logIn(userData.getEmail(), userData.getPassword());
+
+        var homePage = goTo(HomePage.class, mainPageUrl);
+
+        var hotels = homePage.getSearchElement().searchForHotel(hotel.getCity(), now, now.plusDays(hotel.getHowManyNights()), hotel.getAdults(), hotel.getKids());
+        var hotelDetails = hotels.openHotelDetails(hotel.getHotelName());
+        var hotelCheckout = hotelDetails.goToHotelCheckoutForCheapestRoom(hotel.getRoomName());
+
+        hotelCheckout.fillInPersonalInformation(personalInformation);
+        hotelCheckout.fillInCardData(cardData);
+        hotelCheckout.getCompleteBookingButton().click();
+
+        Assertions.assertEquals("Room booked", fakeSmtpServer.CheckForMail());
+    }
 
     /**
      *
      */
     @Test
-    @DisplayName("There should be not possibility to access checkout from link")
+    @DisplayName("There should be not possibility to access checkout from a link")
     void userShouldNotBeAbleToOpenHotelCheckoutByLink() {
         var hotelCheckout = goTo(HotelCheckout.class, hotelCheckoutUrl);
 
