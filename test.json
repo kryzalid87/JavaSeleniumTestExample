@@ -1,0 +1,47 @@
+{
+  "webDriver": {
+    "useSeleniumGrid": false,
+    "type": "chrome",
+    "remoteHub": "http://localhost:4444/wd/hub",
+    "driverPath": "./chromedriver",
+    "timeoutInSeconds": 10
+  },
+  "website": {
+    "scheme": "https",
+    "url": "www.phptravels.net"
+  },
+  "user": {
+    "email": "user@phptravels.com",
+    "password": "demouser"
+  },
+  "hotel": {
+    "hotelName": "Millennium Hilton Bangkok",
+    "country": "thailand",
+    "city": "bangkok",
+    "priceStart": 205.79,
+    "currency": "USD",
+    "roomName": "Premium Room",
+    "facilities": [
+      "24-hour front desk",
+      "Computer station",
+      "Free WiFi"
+    ],
+    "adults": 3,
+    "kids": 2,
+    "howManyNights": 4,
+    "overview": {
+    }
+  },
+  "personalInformation": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john@doe.net",
+    "country": "Argentina",
+    "phoneNumber": "123 456 788"
+  },
+  "cardData": {
+    "nameOnCard": "John Doe",
+    "cardNumber": "1111-1111-1111-1111",
+    "cvc": 123
+  }
+}
