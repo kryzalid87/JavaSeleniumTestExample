@@ -1,6 +1,6 @@
 {
   "webDriver": {
-    "useSeleniumGrid": false,
+    "useSeleniumGrid": true,
     "type": "chrome",
     "remoteHub": "http://localhost:4444/wd/hub",
     "driverPath": "./chromedriver",
