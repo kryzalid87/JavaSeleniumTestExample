@@ -3,18 +3,14 @@ import Helper.WebsiteUrlBuilder;
 import Page.HotelCheckout;
 import Page.HomePage;
 import Page.LoginPage;
-import org.junit.Ignore;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 class HotelCheckoutTest extends TestBase {
 
     private String hotelCheckoutUrl;
@@ -73,7 +69,7 @@ class HotelCheckoutTest extends TestBase {
      * 7. Click on Complete booking button
      * 8. Check if no alert is displayed and if there is correct mail delivered to user mailbox
      */
-    @Ignore("There is a problem with login page page object - needs further investigation")
+    @Disabled("There is a problem with login page page object - needs further investigation")
     @Test
     @DisplayName("Registered user should be able to book a room")
     void registeredUserShouldBeAbleToBookARoom(){
