@@ -18,6 +18,7 @@ public class TestBase {
     static PersonalInformationData personalInformation;
     static CardData cardData;
     static UserData userData;
+    static WebDriverData webDriverData;
 
     static String mainPageUrl;
 
@@ -25,19 +26,22 @@ public class TestBase {
 
     @BeforeAll
     public static void beforeAll() throws IOException {
-        testData = new DataProvider().getTestData(SystemData.getTestFile());
+        testData = new DataProvider().getTestData(SharedConfig.getTestFile());
         hotel = testData.getHotel();
         website = testData.getWebsite();
         personalInformation = testData.getPersonalInformation();
         cardData = testData.getCardData();
         userData = testData.getUserData();
+        webDriverData = testData.getWebDriver();
+
+        SharedConfig.setWebDriverTimout(webDriverData.getTimeoutInSeconds());
 
         mainPageUrl = WebsiteUrlBuilder.getHomePageUrl(website.getScheme(), website.getUrl());
     }
 
     @BeforeEach
     void beforeEach() {
-        driver = WebDriverFactory.getInstance(testData.getWebDriver());
+        driver = WebDriverFactory.getInstance(webDriverData);
     }
 
     @AfterEach

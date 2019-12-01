@@ -1,5 +1,6 @@
 package Page;
 
+import Helper.TestData.SharedConfig;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,7 @@ public class PageBase implements PageBaseInterface {
 
     PageBase(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(this.driver, 30); //todo
+        wait = new WebDriverWait(this.driver, SharedConfig.getWebDriverTimout());
         waitForPageToBeLoaded();
 
         PageFactory.initElements(driver, this);

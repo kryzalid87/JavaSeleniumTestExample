@@ -10,5 +10,5 @@ public class WebDriverData {
     private String type;
     private String remoteHub;
     private String driverPath;
-    private String timeoutInSeconds;
+    private int timeoutInSeconds;
 }

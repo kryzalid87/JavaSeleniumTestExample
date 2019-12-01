@@ -1,5 +1,6 @@
 package Element;
 
+import Helper.TestData.SharedConfig;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +17,7 @@ public class ElementBase implements ElementBaseInterface {
 
     ElementBase(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(this.driver, 30);
+        wait = new WebDriverWait(this.driver, SharedConfig.getWebDriverTimout());
 
         PageFactory.initElements(driver, this);
 

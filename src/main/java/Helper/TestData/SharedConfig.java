@@ -1,6 +1,12 @@
 package Helper.TestData;
 
-public class SystemData {
+import lombok.Getter;
+import lombok.Setter;
+
+public class SharedConfig {
+
+    @Getter @Setter
+    private static int webDriverTimout = 30;
 
     /***
      * @return system property hubUrl
