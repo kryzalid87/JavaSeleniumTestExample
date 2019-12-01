@@ -1,11 +1,12 @@
 package Element;
 
 import Helper.TestData.PersonalInformationData;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
+@Getter
 public class CheckoutPersonalInformationElement extends ElementBase {
 
     @FindBy(id = "first_name")

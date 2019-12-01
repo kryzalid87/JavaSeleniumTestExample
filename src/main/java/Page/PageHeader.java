@@ -16,18 +16,18 @@ public class PageHeader extends PageBase {
     private LoginDropdownElement loginDropdownElement;
 
     @Getter
-    private CurrencyDropDownElement currencyDropdown;
+    private CurrencyDropDownElement currencyDropDown;
 
     @Getter
-    private LanguageDropDownElement languageDropdown;
+    private LanguageDropDownElement languageDropDown;
 
     public PageHeader(WebDriver driver) {
         super(driver);
 
         searchElement = new SearchElement(driver);
         loginDropdownElement = new LoginDropdownElement(driver);
-        currencyDropdown = new CurrencyDropDownElement(driver);
-        languageDropdown = new LanguageDropDownElement(driver);
+        currencyDropDown = new CurrencyDropDownElement(driver);
+        languageDropDown = new LanguageDropDownElement(driver);
     }
 
     /***

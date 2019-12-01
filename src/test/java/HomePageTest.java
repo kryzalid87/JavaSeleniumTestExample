@@ -8,7 +8,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 class HomePageTest extends TestBase {
 
     /**
-     *
+     * 1. Open website home page
+     * 2. Choose another language from the language change drop-down
+     * 3. Check if website elements are translated
      */
     @ParameterizedTest
     @CsvSource({"French, Hôtels, Rechercher",
@@ -18,7 +20,7 @@ class HomePageTest extends TestBase {
     void thereShouldBeLanguageChangePossible(String language, String hotelsTabName, String searchButtonText) {
         var homePage = goTo(HomePage.class, mainPageUrl);
 
-        homePage = homePage.getLanguageDropdown().changeValue(HomePage.class, language);
+        homePage = homePage.getLanguageDropDown().changeValue(HomePage.class, language);
 
         var tab = homePage.getSearchTabElement(Product.HOTELS);
         var searchButton = homePage.getSearchElement().getHotelSearchButton();

@@ -1,4 +1,3 @@
-import Helper.TestData.TestData;
 import Helper.TestData.WebDriverData;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;

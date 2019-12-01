@@ -15,12 +15,12 @@
     "password": "demouser"
   },
   "hotel": {
-    "hotelName": "Millennium Hilton Bangkok",
+    "hotelName": "Novotel Bangkok Suvarnabhumi Airport",
     "country": "thailand",
     "city": "bangkok",
-    "priceStart": 205.79,
+    "priceStart": 152.13,
     "currency": "USD",
-    "roomName": "Premium Room",
+    "roomName": "Superior Room",
     "facilities": [
       "24-hour front desk",
       "Computer station",

@@ -32,7 +32,9 @@ class HotelSearchTest extends TestBase {
     }
 
     /**
-     *
+     * 1. Open website home page
+     * 2. Fill in all needed search data, where search for a destination is made by city name
+     * 3. Check if list of hotels contains search results
      */
     @Test
     @DisplayName("There should be possible to search for hotel by city name")
@@ -46,7 +48,9 @@ class HotelSearchTest extends TestBase {
     }
 
     /**
-     *
+     * 1. Open website home page
+     * 2. Search for a hotel for given search criteria
+     * 3. Check if price have correct currency and amount
      */
     @Test
     @DisplayName("There should be price displayed on hotel search result list")
@@ -61,16 +65,19 @@ class HotelSearchTest extends TestBase {
     }
 
     /**
-     *
+     * 1. Open website home page
+     * 2. Search for a hotel for given search criteria
+     * 3. Change currency
+     * 3. Check if price is displayed in chosen currency, and the amount is recalculated with exchange rate
      */
     @ParameterizedTest
-    @CsvSource({"EUR, 0.5", "GBP, 0.3,", "JPY, 10"})
+    @CsvSource({"EUR, 1.1", "GBP, 1.3,", "JPY, 109"})
     @DisplayName("There should be correct price displayed on hotel search result list - currency change")
     void thereShouldBeCurrencyChangePossible(String currencyCode, Double exchangeRate) {
         hotelsList = goTo(HotelsList.class, hotelSearchUrl);
         var initPrice = hotelsList.getStayPrice(hotelName);
 
-        var currencyDropDown = hotelsList.getCurrencyDropdown();
+        var currencyDropDown = hotelsList.getCurrencyDropDown();
         hotelsList = currencyDropDown.changeValue(HotelsList.class, currencyCode);
         var newPrice = hotelsList.getStayPrice(hotelName);
 
@@ -81,7 +88,9 @@ class HotelSearchTest extends TestBase {
     }
 
     /**
-     *
+     * 1. Open website home page
+     * 2. Search for a hotel for given search criteria
+     * 3. Check if hotel have correct name, facilities, and if there are any room available for booking
      */
     @Test
     @DisplayName("Hotel details should be accessible from search result list")
@@ -90,8 +99,9 @@ class HotelSearchTest extends TestBase {
         var hotelDetails = hotelsList.openHotelDetails(hotelName);
 
         Assertions.assertAll(
-                () -> Assertions.assertEquals(hotelName, hotelDetails.getHotelName()),
-                () -> Assertions.assertTrue(hotelDetails.getFacilityList().containsAll(hotel.getFacilities()))
+                () -> Assertions.assertEquals(hotelName, hotelDetails.getHotelName(), "Hotel details have correct hotel name"),
+                () -> Assertions.assertTrue(hotelDetails.getFacilityList().containsAll(hotel.getFacilities()), "Hotel details have correct facilities"),
+                () -> Assertions.assertTrue(hotelDetails.getRoomListElement().getRooms().size() > 0, "There are rooms available to be booked")
         );
     }
 }

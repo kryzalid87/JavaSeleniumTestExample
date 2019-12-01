@@ -2,6 +2,7 @@ package Element;
 
 import Const.TestString;
 import Page.HotelCheckout;
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +13,7 @@ import java.util.List;
 
 public class RoomListElement extends ElementBase {
 
+    @Getter
     @FindBy(className = "room-item")
     private List<WebElement> rooms;
 
