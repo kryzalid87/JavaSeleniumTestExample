@@ -6,7 +6,7 @@ public class SystemData {
      * @return system property hubUrl
      */
     public static String getHubAddress(){
-        return System.getProperty("hubUrl");
+        return System.getProperty("remoteHub");
     }
 
     /***
