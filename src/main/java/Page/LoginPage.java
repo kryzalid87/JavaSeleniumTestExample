@@ -15,7 +15,7 @@ public class LoginPage extends PageHeader {
     @FindBy(xpath = "//button[contains(@class, 'loginbtn')]")
     private WebElement loginButton;
 
-    public LoginPage(WebDriver driver) {
+    LoginPage(WebDriver driver) {
         super(driver);
     }
 

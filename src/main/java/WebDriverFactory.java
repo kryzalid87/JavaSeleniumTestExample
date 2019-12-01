@@ -1,3 +1,4 @@
+import Helper.TestData.SystemData;
 import Helper.TestData.WebDriverData;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -23,7 +24,7 @@ class WebDriverFactory {
                 return new FirefoxDriver();
             case "chrome":
             default:
-                if (webDriverData.getUseSeleniumGrid()) {
+                if (webDriverData.getUseSeleniumGrid() || SystemData.getHubAddress() != null) {
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--start-maximized",
                             "--no-sandbox");
@@ -33,7 +34,8 @@ class WebDriverFactory {
                     capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
                     try {
-                        return new RemoteWebDriver(new URL(webDriverData.getRemoteHub()), capabilities);
+                        var hubUrl = (SystemData.getHubAddress() != null) ? SystemData.getHubAddress() : webDriverData.getRemoteHub();
+                        return new RemoteWebDriver(new URL(hubUrl), capabilities);
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }

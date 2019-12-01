@@ -25,7 +25,7 @@ public class TestBase {
 
     @BeforeAll
     public static void beforeAll() throws IOException {
-        testData = new DataProvider().getTestData("./test.json");
+        testData = new DataProvider().getTestData(SystemData.getTestFile());
         hotel = testData.getHotel();
         website = testData.getWebsite();
         personalInformation = testData.getPersonalInformation();

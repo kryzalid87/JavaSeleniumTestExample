@@ -21,7 +21,7 @@ public class PageHeader extends PageBase {
     @Getter
     private LanguageDropDownElement languageDropDown;
 
-    public PageHeader(WebDriver driver) {
+    PageHeader(WebDriver driver) {
         super(driver);
 
         searchElement = new SearchElement(driver);
