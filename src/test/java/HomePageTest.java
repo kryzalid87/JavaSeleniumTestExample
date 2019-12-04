@@ -26,8 +26,8 @@ class HomePageTest extends TestBase {
         var searchButton = homePage.getSearchElement().getHotelSearchButton();
 
         Assertions.assertAll(
-                () -> Assertions.assertTrue(hotelsTabName.equalsIgnoreCase(tab.getText())),
-                () -> Assertions.assertTrue(searchButtonText.equalsIgnoreCase(searchButton.getText()))
+                () -> Assertions.assertTrue(hotelsTabName.equalsIgnoreCase(tab.getText()), "Hotel name is correctly translated"),
+                () -> Assertions.assertTrue(searchButtonText.equalsIgnoreCase(searchButton.getText()), "Search button is correctly translated")
         );
     }
 }

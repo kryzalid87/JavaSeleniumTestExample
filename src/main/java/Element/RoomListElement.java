@@ -4,6 +4,7 @@ import Const.TestString;
 import Page.HotelCheckout;
 import lombok.Getter;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,12 +29,12 @@ public class RoomListElement extends ElementBase {
      * @param roomName room name
      * @return new HotelCheckout page instance
      */
-    public HotelCheckout bookCheapestRoom(String roomName){
+    public HotelCheckout bookCheapestRoom(String roomName) {
 
-        var roomToBook =  rooms.stream()
-                .filter( el -> el.getText().contains(roomName))
+        var roomToBook = rooms.stream()
+                .filter(el -> el.getText().contains(roomName))
                 .min(Comparator.comparingDouble(el -> Double.parseDouble(el.findElement(priceSelector).getText()))
-                ).get();
+                ).orElseThrow(() -> new NoSuchElementException(String.format("There was no room with name %s", roomName)));
 
         safetyClick(roomToBook);
         var bookNowButton = roomToBook.findElement(By.xpath(String.format("//button[text()='%s']", TestString.BOOK_NOW)));

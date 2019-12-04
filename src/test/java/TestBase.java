@@ -12,13 +12,12 @@ import java.io.IOException;
 
 public class TestBase {
 
-    private static TestData testData;
     static HotelData hotel;
     static WebsiteData website;
     static PersonalInformationData personalInformation;
     static CardData cardData;
     static UserData userData;
-    static WebDriverData webDriverData;
+    private static WebDriverData webDriverData;
 
     static String mainPageUrl;
 
@@ -26,7 +25,7 @@ public class TestBase {
 
     @BeforeAll
     public static void beforeAll() throws IOException {
-        testData = new DataProvider().getTestData(SharedConfig.getTestFile());
+        TestData testData = new DataProvider().getTestData(SharedConfig.getTestFile());
         hotel = testData.getHotel();
         website = testData.getWebsite();
         personalInformation = testData.getPersonalInformation();

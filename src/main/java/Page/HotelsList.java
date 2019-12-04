@@ -24,9 +24,9 @@ public class HotelsList extends PageHeader {
      * @param hotelName hotel name
      * @return new HotelDetail instance if hotel was found
      */
-    public HotelDetail openHotelDetails(String hotelName){
+    public HotelDetail openHotelDetails(String hotelName) {
         var hotel = getHotelDetailsByName(hotelName);
-        if(hotel.isDisplayed()){
+        if (hotel.isDisplayed()) {
             var detailsButton = hotel.findElement(detailsButtonXpath);
             detailsButton.click();
             return new HotelDetail(driver);
@@ -38,9 +38,9 @@ public class HotelsList extends PageHeader {
      * @param hotelName hotel name
      * @return new price object for found hotel was found
      */
-    public Price getStayPrice(String hotelName){
+    public Price getStayPrice(String hotelName) {
         var hotel = getHotelDetailsByName(hotelName);
-        if(hotel.isDisplayed()){
+        if (hotel.isDisplayed()) {
             var price = hotel.findElement(startPriceXpath).getText().split(" ");
             return new Price(price[0], Double.valueOf(price[1]));
         }
@@ -51,11 +51,11 @@ public class HotelsList extends PageHeader {
      * @param hotelName hotel name
      * @return hotel details web element
      */
-    private WebElement getHotelDetailsByName(String hotelName){
+    private WebElement getHotelDetailsByName(String hotelName) {
         return hotels.stream()
                 .filter(x -> x.getText().contains(hotelName))
                 .findFirst()
-                .get();
+                .orElseThrow(() -> new NoSuchElementException(String.format("There was no hotel displayed with name %s", hotelName)));
     }
 
 }
